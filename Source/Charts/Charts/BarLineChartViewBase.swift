@@ -531,6 +531,10 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
     
     @objc private func tapGestureRecognized(_ recognizer: NSUITapGestureRecognizer)
     {
+        NotificationCenter.default.post(name: NSNotification.Name("BarLineChartViewBase_tapGestureRecognized"),
+                                        object: nil,
+                                        userInfo: ["location": recognizer.location(in: self)])
+        
         if data === nil
         {
             return
